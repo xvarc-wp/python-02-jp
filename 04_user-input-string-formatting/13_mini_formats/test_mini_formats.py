@@ -8,7 +8,7 @@ expected_output = """ 0  1  2  3  4  5  6  7  8  9
 """
 
 
-def test_mini_formats(self, mocker):
+def test_mini_formats(mocker):
     mocker.patch("builtins.print")
     importlib.import_module(name="mini_formats", package="files")
 
