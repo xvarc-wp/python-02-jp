@@ -1,10 +1,13 @@
-import importlib
 import subprocess
+from pathlib import Path
 
 import pytest
 
 
 class TestMonthReminder:
+    parent = Path(__file__).resolve().parent
+    file_path = f"{parent}/month_reminder.py"
+
     @pytest.mark.parametrize(
         "number, month",
         [
@@ -24,7 +27,7 @@ class TestMonthReminder:
     )
     def test_print(self, number, month, capfd):
         completed_process = subprocess.run(
-            ["python", "month_reminder.py"],
+            ["python", self.file_path],
             input=number,
             text=True,
         )
@@ -44,7 +47,7 @@ class TestMonthReminder:
     )
     def test_error(self, number, month, capfd):
         completed_process = subprocess.run(
-            ["python", "month_reminder.py"],
+            ["python", self.file_path],
             input=number,
             text=True,
         )

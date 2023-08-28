@@ -1,4 +1,5 @@
 import subprocess
+from pathlib import Path
 
 import pytest
 
@@ -17,8 +18,11 @@ import pytest
     ],
 )
 def test_split_and_pick(text, expected_output, capfd):
+    parent = Path(__file__).resolve().parent
+    file_path = f"{parent}/split_and_pick.py"
+
     completed_process = subprocess.run(
-        ["python", "split_and_pick.py"],
+        ["python", file_path],
         input=text,
         text=True,
     )
